@@ -5,16 +5,6 @@ public class Library {
     private List<Member> members = new ArrayList<Member>();
     private List<Book> books = new ArrayList<Book>();
 
-    // Add a new member to the library
-    public void addMember(Member member) {
-        members.add(member);
-    }
-    
-    // Add a new book to the library
-    public void addBook(Book book) {
-        books.add(book);
-    }
-
     // Find a member by ID
     public Member findMemberById(int id) {
         for (Member member : members) {

@@ -53,6 +53,8 @@ public class LibraryManagement {
 	                    System.out.println("Book added successfully.");
 	                }
 	                break;
+
+	                break;
                 case 3:
                 	System.out.println("\n--- Available Members ---");
                     for (Member member : library.getMembers()) {
