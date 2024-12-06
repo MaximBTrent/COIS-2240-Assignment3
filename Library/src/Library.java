@@ -44,4 +44,25 @@ public class Library {
     public List<Book> getBooks() {
         return books;
     }
+    
+ // Add a new member to the library
+    public boolean addMember(Member member) {
+        if (findMemberById(member.getId()) != null) {
+            System.out.println("Member with ID " + member.getId() + " already exists.");
+            return false;
+        }
+        members.add(member);
+        return true;
+    }
+
+    // Add a new book to the library
+    public boolean addBook(Book book) {
+        if (findBookById(book.getId()) != null) {
+            System.out.println("Book with ID " + book.getId() + " already exists.");
+            return false;
+        }
+        books.add(book);
+        return true;
+    }
+    
 }
