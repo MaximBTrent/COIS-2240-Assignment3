@@ -28,30 +28,31 @@ public class LibraryManagement {
             scanner.nextLine();
 
             switch (choice) {
-                case 1:
-                    System.out.print("Enter member ID: ");
-                    int id = scanner.nextInt();
-                	System.out.print("Enter member name: ");
-                    String name = scanner.next();
-                    
-                    scanner.nextLine();
-
-                    Member newMember = new Member(id, name);
-                    library.addMember(newMember);
-                    System.out.println("Member added successfully.");
-                    break;
-                case 2:
-                    System.out.print("Enter book ID: ");
-                    id = scanner.nextInt();
-                	System.out.print("Enter book title: ");
-                    String title = scanner.next();
-                    
-                    scanner.nextLine();
-
-                    Book newBook = new Book(id, title);
-                    library.addBook(newBook);
-                    System.out.println("Book added to library successfully.");
-                    break;
+	            case 1:
+	                System.out.print("Enter member ID: ");
+	                int id = scanner.nextInt();
+	                System.out.print("Enter member name: ");
+	                String name = scanner.next();
+	                scanner.nextLine();
+	
+	                Member newMember = new Member(id, name);
+	                if (library.addMember(newMember)) {
+	                    System.out.println("Member added successfully.");
+	                }
+	                break;
+	
+	            case 2:
+	                System.out.print("Enter book ID: ");
+	                int bookId = scanner.nextInt();
+	                System.out.print("Enter book title: ");
+	                String title = scanner.next();
+	                scanner.nextLine();
+	
+	                Book newBook = new Book(bookId, title);
+	                if (library.addBook(newBook)) {
+	                    System.out.println("Book added successfully.");
+	                }
+	                break;
                 case 3:
                 	System.out.println("\n--- Available Members ---");
                     for (Member member : library.getMembers()) {
