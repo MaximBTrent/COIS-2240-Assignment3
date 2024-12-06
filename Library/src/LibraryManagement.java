@@ -69,7 +69,7 @@ public class LibraryManagement {
                     }
                     
                     System.out.print("Enter book ID: ");
-                    int bookId = scanner.nextInt();
+                    bookId = scanner.nextInt();
                     
                     scanner.nextLine();
 
@@ -117,7 +117,7 @@ public class LibraryManagement {
                     }
                     break;
                 case 6:
-                	Transaction.getTransaction().displayTransactionHistory();
+                    Transaction.getTransaction().displayTransactionHistory();
                     break;
                 case 7:
                     System.out.println("Exiting. Good Bye..");

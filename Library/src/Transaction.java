@@ -3,6 +3,9 @@ import java.util.Date;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 
 public class Transaction {
     private static Transaction instance;
@@ -58,4 +61,23 @@ public class Transaction {
             System.out.println("Error saving transaction: " + e.getMessage());
         }
     }
+    
+    public void displayTransactionHistory() {
+        File file = new File("transactions.txt");
+        if (!file.exists()) {
+            System.out.println("No transactions found.");
+            return;
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            System.out.println("Transaction History:");
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading transaction history: " + e.getMessage());
+        }
+    }
+    
 }
