@@ -44,4 +44,14 @@ public class Library {
         }
         return null;
     }
+    
+ // Getter methods for the members and books lists
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+    
 }

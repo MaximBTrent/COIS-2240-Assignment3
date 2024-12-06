@@ -28,87 +28,86 @@ public class LibraryManagement {
             scanner.nextLine();
 
             switch (choice) {
-	            case 1:
-	                System.out.print("Enter member ID: ");
-	                int id = scanner.nextInt();
-	                System.out.print("Enter member name: ");
-	                String name = scanner.next();
-	                scanner.nextLine();
-	
-	                Member newMember = new Member(id, name);
-	                if (library.addMember(newMember)) {
-	                    System.out.println("Member added successfully.");
-	                }
-	                break;
-	
-	            case 2:
-	                System.out.print("Enter book ID: ");
-	                int bookId = scanner.nextInt();
-	                System.out.print("Enter book title: ");
-	                String title = scanner.next();
-	                scanner.nextLine();
-	
-	                Book newBook = new Book(bookId, title);
-	                if (library.addBook(newBook)) {
-	                    System.out.println("Book added successfully.");
-	                }
-	                break;
+                case 1:
+                    System.out.print("Enter member ID: ");
+                    int id = scanner.nextInt();
+                    System.out.print("Enter member name: ");
+                    String name = scanner.next();
+                    scanner.nextLine();
 
-	                break;
+                    Member newMember = new Member(id, name);
+                    if (library.addMember(newMember)) {
+                        System.out.println("Member added successfully.");
+                    }
+                    break;
+
+                case 2:
+                    System.out.print("Enter book ID: ");
+                    int bookId = scanner.nextInt();
+                    System.out.print("Enter book title: ");
+                    String title = scanner.next();
+                    scanner.nextLine();
+
+                    Book newBook = new Book(bookId, title);
+                    if (library.addBook(newBook)) {
+                        System.out.println("Book added successfully.");
+                    }
+                    break;
+
                 case 3:
-                	System.out.println("\n--- Available Members ---");
+                    System.out.println("\n--- Available Members ---");
                     for (Member member : library.getMembers()) {
                         System.out.println(member.getId() + ". " + member.getName());
                     }
-                    
+
                     System.out.print("Enter member ID: ");
                     int memberId = scanner.nextInt();
-                    
+
                     System.out.println("\n--- Available Books ---");
                     for (Book book : library.getBooks()) {
                         if (book.isAvailable())
                             System.out.println(book.getId() + ". " + book.getTitle());
                     }
-                    
+
                     System.out.print("Enter book ID: ");
                     bookId = scanner.nextInt();
-                    
+
                     scanner.nextLine();
 
                     Member member = library.findMemberById(memberId);
                     Book book = library.findBookById(bookId);
 
                     if (member != null && book != null) {
-                    	Transaction.borrowBook(book, member);
+                        Transaction.getTransaction().borrowBook(book, member);
                     } else {
                         System.out.println("Invalid member or book ID.");
                     }
                     break;
+
                 case 4:
-                	System.out.print("Enter member ID: ");
+                    System.out.print("Enter member ID: ");
                     memberId = scanner.nextInt();
-                    
                     System.out.print("Enter book ID: ");
                     bookId = scanner.nextInt();
-                    
                     scanner.nextLine();
 
                     member = library.findMemberById(memberId);
                     book = library.findBookById(bookId);
 
                     if (member != null && book != null) {
-                    	Transaction.returnBook(book, member);
+                        Transaction.getTransaction().returnBook(book, member);
                     } else {
                         System.out.println("Invalid member or book ID.");
                     }
                     break;
+
                 case 5:
-                	System.out.print("Enter member ID: ");
+                    System.out.print("Enter member ID: ");
                     memberId = scanner.nextInt();
                     scanner.nextLine();
 
                     Member specificMember = library.findMemberById(memberId);
-                    
+
                     if (specificMember != null) {
                         System.out.println("Books borrowed by " + specificMember.getName() + ":");
                         for (Book bk : specificMember.getBorrowedBooks()) {
@@ -118,13 +117,16 @@ public class LibraryManagement {
                         System.out.println("Invalid member ID.");
                     }
                     break;
+
                 case 6:
                     Transaction.getTransaction().displayTransactionHistory();
                     break;
+
                 case 7:
                     System.out.println("Exiting. Good Bye..");
                     running = false;
                     break;
+
                 default:
                     System.out.println("Invalid choice! Please try again.");
             }
