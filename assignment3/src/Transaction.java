@@ -58,4 +58,22 @@ public class Transaction {
         return sdf.format(new Date());
     }
     
+    public void displayTransactionHistory() {
+        File file = new File("transactions.txt");
+        if (!file.exists()) {
+            System.out.println("No transactions found.");
+            return;
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            System.out.println("Transaction History:");
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading transaction history: " + e.getMessage());
+        }
+    }
+    
 }
